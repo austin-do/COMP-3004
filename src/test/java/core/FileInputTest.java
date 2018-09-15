@@ -14,16 +14,13 @@ public class FileInputTest extends TestCase{
 	@Test
 	public void testFileInput() {
 		FileInput finput = new FileInput();
-		PlayerHand[] guestCards = new PlayerHand["value"];
-		PlayerHand[] dealerCards = new PlayerHand["value"];
+		
+		Card[] cards = {new Card("SK"), new Card("HA"), new Card("HQ"), new Card("CA")};
 		
 		Assert.assertArrayEquals(
-				guestCards, 
-				readFile(1));
+				cards, 
+				finput.readFile(test1));
 		
-		Assert.assertArrayEquals(
-				dealerCards, 
-				readFile(1));
 	}
 
 }
