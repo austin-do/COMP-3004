@@ -1,9 +1,6 @@
 package core;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,10 +18,12 @@ public class FileInputTest extends TestCase{
 		try {
 			Assert.assertEquals(
 					fileinput, 
-					finput.readFile("/test1"));
+					finput.readFile("/test1.txt"));
+			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("File not found.");
 		}
+		
 	}
 
 }
