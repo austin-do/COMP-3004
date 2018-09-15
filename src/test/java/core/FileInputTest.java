@@ -7,24 +7,23 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FileInputTest {
+import junit.framework.TestCase;
+
+public class FileInputTest extends TestCase{
 
 	@Test
 	public void testFileInput() {
 		FileInput finput = new FileInput();
-		Cards[] cards = new Cards[];
+		PlayerHand[] guestCards = new PlayerHand["value"];
+		PlayerHand[] dealerCards = new PlayerHand["value"];
+		
 		Assert.assertArrayEquals(
-				cards, 
-				finput(1));
-	}
-	
-	@Test
-	public void testEmptyFileInput() {
-		FileInput finput = new FileInput();
-		Cards[] cards = new Cards[];
-		Assert.assertNull(
-				"File was either empty or invalid.", 
-				finput(2));
+				guestCards, 
+				readFile(1));
+		
+		Assert.assertArrayEquals(
+				dealerCards, 
+				readFile(1));
 	}
 
 }
