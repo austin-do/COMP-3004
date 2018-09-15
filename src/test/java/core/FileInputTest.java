@@ -2,6 +2,7 @@ package core;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import org.junit.Assert;
@@ -15,12 +16,15 @@ public class FileInputTest extends TestCase{
 	public void testFileInput() {
 		FileInput finput = new FileInput();
 		
-		Card[] cards = {new Card("SK"), new Card("HA"), new Card("HQ"), new Card("CA")};
+		String fileinput = "SK HA HQ CA";
 		
-		Assert.assertArrayEquals(
-				cards, 
-				finput.readFile(test1));
-		
+		try {
+			Assert.assertEquals(
+					fileinput, 
+					finput.readFile("/test1"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

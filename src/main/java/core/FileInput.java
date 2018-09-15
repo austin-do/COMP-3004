@@ -1,25 +1,26 @@
 package core;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import core.PlayerHand;
 
 public class FileInput {
 	
-	public PlayerHand readFile(int fileNumber) throws FileNotFoundException {
+	public String readFile(String fileName) throws FileNotFoundException {
 		
 		//Find file in current directory called fileInput
 		String cwd = System.getProperty("user.dir");
-		File file = new File(cwd + "\fileInput");
+		File file = new File(cwd + fileName);
 		Scanner sc = new Scanner(file);
 		
-		int counter = 0;
-		String [] cards = null;
+		List<Card> cards = new ArrayList<Card>();
 		
 		while(sc.hasNextLine()) {
-				cards[counter] = sc.toString();
-				counter++;
+				Card card = new Card(sc.toString());
+				cards.add(card);
 		}
 		
 		//Card should never be more than 3 characters
