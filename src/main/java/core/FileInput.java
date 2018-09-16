@@ -22,4 +22,8 @@ public class FileInput {
 		
 		return instructions;
 	}
+	
+	public void runGame() {
+		
+	}
 }
