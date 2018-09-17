@@ -1,11 +1,16 @@
 package core;
 
-public class PlayerHand {
-	private Card[] cards;
-	
-	public PlayerHand(Card card1, Card card2) {
-		this.cards[0] = card1;
-		this.cards[1] = card2;
+import java.util.ArrayList;
 
+public class PlayerHand {
+	private ArrayList<Card> cards = new ArrayList<Card>();
+	
+	public PlayerHand(Card c1, Card c2) {
+		this.cards.add(c1);
+		this.cards.add(c2);
+	}
+
+	public ArrayList<Card> getCards() {
+		return cards;
 	}
 }

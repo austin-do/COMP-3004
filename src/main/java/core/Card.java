@@ -29,4 +29,7 @@ public class Card {
 		public String getSuite() {return suite;}
 
 		public void setSuite(String suite) {this.suite = suite;}
+		
+		public String getSuiteNumber() {return suite + number;}
+		
 }

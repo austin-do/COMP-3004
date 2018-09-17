@@ -10,13 +10,11 @@ public class PrintPlayerHandTest {
 	public void test() {
 		
 		ConsoleInput cinput = new ConsoleInput();
-		Card card1 = new Card("HA");
-		Card card2 = new Card("HQ");
 		
-		PlayerHand hand = new PlayerHand(card1, card2);
+		PlayerHand hand = new PlayerHand( new Card("HA"), new Card("HQ"));
 		
 		assertEquals(
-				"HA HQ", 
+				"HA HQ ", 
 				cinput.printHand(hand));
 	}
 
