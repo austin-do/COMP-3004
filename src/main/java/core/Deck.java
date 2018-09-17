@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
 	private ArrayList<Card> cards;
@@ -17,6 +18,25 @@ public class Deck {
 				this.cards.add(new Card(cardSuit + number));
 			}
 		}
+	}
+	
+	public void shuffle() {
+		ArrayList<Card> tmp = new ArrayList<Card>();
+		Random random = new Random();
+		int randIndex = 0;
+		int size = this.cards.size();
+
+		try {
+			for(int i = 0; i < size; i++) {
+				randIndex = random.nextInt((this.cards.size()-1 - 0) + 1) + 0;
+				tmp.add(cards.get(randIndex));
+				this.cards.remove(randIndex);
+			}
+		}catch (IllegalArgumentException e) {
+			System.out.println("Deck has not been created.");
+		}
+		
+		this.cards = tmp;
 	}
 	
 	public ArrayList<Card> getCards() {return this.cards;}
