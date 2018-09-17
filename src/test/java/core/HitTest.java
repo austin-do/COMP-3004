@@ -8,22 +8,27 @@ public class HitTest {
 
 	@Test
 	public void test() {
-		ConsoleInput cinput = new ConsoleInput();
-		cinput.runGame();
+		Deck deck = new Deck();
+		deck.makeDeck();
+		deck.shuffle();
 		
-		FileInput finput = new FileInput();
+		PlayerHand hand1 = new PlayerHand( new Card("HA"), new Card("HQ"));
+		PlayerHand hand2 = new PlayerHand( new Card("HA"), new Card("HQ"));
 		
-		PlayerHand hand = new PlayerHand( new Card("HA"), new Card("HQ"));
-		int sizeBeforeHit = hand.getCards().size();
+		int sizeBeforeHit = hand1.getCards().size();
+		
+		hand1.drawCard(deck);
 		
 		assertEquals(
 				sizeBeforeHit + 1 , 
-				cinput.hit(hand).size() );
+				hand1.getCards().size());
+		
+		hand2.addCard(new Card("DQ"));
+		
 		assertEquals(
-				"HA [] DQ", 
-				finput.hit("DQ") );
-	}
-
+				sizeBeforeHit + 1, 
+				hand2.getCards().size());
 	}
 
 }
+

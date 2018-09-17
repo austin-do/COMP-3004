@@ -39,6 +39,14 @@ public class Deck {
 		this.cards = tmp;
 	}
 	
+	public void removeCard(int i) {
+		this.cards.remove(i);
+	}
+	
+	public void addCard(Card card) {
+		this.cards.add(card);
+	}
+	
 	public ArrayList<Card> getCards() {return this.cards;}
 	
 }

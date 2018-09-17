@@ -11,7 +11,7 @@ public class FileInput {
 		
 		//Find file in current directory called fileInput
 		String cwd = System.getProperty("user.dir");
-		File file = new File(cwd + fileName);
+		File file = new File(cwd + "\\" + fileName);
 		
 		Scanner sc = new Scanner(file);
 		
@@ -25,6 +25,26 @@ public class FileInput {
 	}
 	
 	public void runGame() {
+		
+		Deck deck = new Deck();
+		PlayerHand player = new PlayerHand();
+		PlayerHand dealer = new PlayerHand();
+		String instructions = "";
+		
+		while(true) {
+			
+			Scanner sc = new Scanner(System.in);
+			String us = promptUser(sc);
+			
+			System.out.println("Reading file...");
+			
+			try {
+				instructions = readFile(us);
+				break;
+			} catch (FileNotFoundException e) {
+				System.out.println("Invalid File Name.\n");
+			}
+		}
 		
 	}
 	
@@ -58,5 +78,16 @@ public class FileInput {
 		
 		System.out.println(ret);
 		return ret;
+	}
+	
+	public static String promptUser(Scanner sc) {
+		System.out.println("Enter filename: ");
+		
+		if(sc.hasNextLine()) {
+		String fn = sc.nextLine().toString().toLowerCase();
+		return fn;
+		}
+		
+		return "oops";
 	}
 }
