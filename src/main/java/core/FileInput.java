@@ -2,6 +2,7 @@ package core;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class FileInput {
@@ -25,5 +26,20 @@ public class FileInput {
 	
 	public void runGame() {
 		
+	}
+	
+	public String printHand(PlayerHand hand) {
+		
+		String ret = "";
+		
+		System.out.println("Player's Hand: " );
+		
+		Iterator<Card> PH = hand.getCards().iterator();
+		while(PH.hasNext()) {
+			ret += PH.next().getSuiteNumber() + " ";
+		}
+		
+		System.out.println(ret);
+		return ret;
 	}
 }
