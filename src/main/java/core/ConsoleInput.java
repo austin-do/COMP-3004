@@ -21,5 +21,6 @@ public class ConsoleInput {
 		System.out.println(ret);
 		return ret;
 	} 
+
 }
 
