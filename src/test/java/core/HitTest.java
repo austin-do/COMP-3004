@@ -9,16 +9,19 @@ public class HitTest {
 	@Test
 	public void test() {
 		ConsoleInput cinput = new ConsoleInput();
+		cinput.runGame();
+		
 		FileInput finput = new FileInput();
 		
 		PlayerHand hand = new PlayerHand( new Card("HA"), new Card("HQ"));
+		int sizeBeforeHit = hand.getCards().size();
 		
 		assertEquals(
-				"HA [] ", 
-				cinput.);
+				sizeBeforeHit + 1 , 
+				cinput.hit(hand).size() );
 		assertEquals(
-				"HA [] ", 
-				finput.);
+				"HA [] DQ", 
+				finput.hit("DQ") );
 	}
 
 	}
