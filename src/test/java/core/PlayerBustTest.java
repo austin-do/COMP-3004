@@ -13,6 +13,6 @@ public class PlayerBustTest {
 		
 		hand.addCard(new Card("HQ"));
 		
-		assertTrue(hand.value > 21);
-
+		assertTrue(hand.Value() > 21);
+	}
 }
