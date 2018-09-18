@@ -1,6 +1,7 @@
 package core;
 
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class ConsoleInput {
 	Deck deck;
@@ -27,6 +28,23 @@ public class ConsoleInput {
 		dealer.drawCard(deck);
 		
 		printDealerHand(dealer);
+		
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			String us = PlayerMove(sc);
+			
+			if(us.equals("h")){
+				player.drawCard(deck);
+				printHand(player);
+				
+			}
+			else if(us.equals("s")) {
+				break;
+			}
+			else {
+				System.out.println("Invalid selection.");
+			}
+		}
 		
 		return true;
 	}
@@ -63,5 +81,15 @@ public class ConsoleInput {
 		return ret;
 	}
 
+	public String PlayerMove(Scanner sc) {
+		System.out.println("\nWould you like to (H)it or (S)tand? ");
+		
+		if(sc.hasNextLine()) {
+		String userSelection = sc.nextLine().toString().toLowerCase();
+		return userSelection;
+		}
+		
+		return "oops";	
+	}
 }
 
