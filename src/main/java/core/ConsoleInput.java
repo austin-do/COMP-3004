@@ -9,7 +9,7 @@ public class ConsoleInput {
 	PlayerHand dealer;
 	
 	public boolean runGame() {
-		Deck deck;
+
 		PlayerHand player = new PlayerHand();
 		PlayerHand dealer = new PlayerHand();
 		
