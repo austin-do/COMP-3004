@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class HitTest {
+public class HitMultipleTest {
 
 	@Test
 	public void test() {
@@ -17,19 +17,33 @@ public class HitTest {
 		
 		int sizeBeforeHit = hand1.getCards().size();
 		
+		//Hit Once (console)
 		hand1.drawCard(deck);
 		
 		assertEquals(
 				sizeBeforeHit + 1 , 
 				hand1.getCards().size());
 		
+		//Hit Multiple (console)
+		hand1.drawCard(deck);
+		
+		assertEquals(
+				sizeBeforeHit + 2 , 
+				hand1.getCards().size());
+		
 		hand2.addCard(new Card("DQ"));
 		
+		//Hit Once (file)
 		assertEquals(
 				sizeBeforeHit + 1, 
 				hand2.getCards().size());
 		
+		hand2.addCard(new Card("SQ"));
+		
+		//Hit Multiple (file)
+		assertEquals(
+				sizeBeforeHit + 2, 
+				hand2.getCards().size());
 	}
 
 }
-
