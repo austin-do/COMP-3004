@@ -31,6 +31,11 @@ public class ConsoleInput {
 		
 		PlayerTurn(player);
 		
+		DealerTurn(dealer);
+		
+		printHand(player);
+		printHand(dealer);
+		
 		return true;
 	}
 	
@@ -45,7 +50,7 @@ public class ConsoleInput {
 			ret += PH.next().getSuiteNumber() + " ";
 		}
 		
-		System.out.println(ret);
+		System.out.println(ret + "\n");
 		return ret;
 	} 
 	
@@ -62,12 +67,12 @@ public class ConsoleInput {
 			ret += PH.next().getSuiteNumber() + " ";
 		}
 		
-		System.out.println(ret);
+		System.out.println(ret + "\n");
 		return ret;
 	}
 
 	public String PlayerMove(Scanner sc) {
-		System.out.println("\nWould you like to (H)it or (S)tand? ");
+		System.out.println("Would you like to (H)it or (S)tand? ");
 		
 		if(sc.hasNextLine()) {
 		String userSelection = sc.nextLine().toString().toLowerCase();
@@ -89,6 +94,12 @@ public class ConsoleInput {
 			
 			if(us.equals("h")){
 				player.drawCard(deck);
+				if(player.Value() > 21) {
+					printHand(player);
+					System.out.println("---------------------------------------");
+					System.out.println("Player Bust! Dealer wins.");
+					System.exit(0);;
+				}
 				printHand(player);
 				
 			}
@@ -105,17 +116,22 @@ public class ConsoleInput {
 	public void DealerTurn(PlayerHand dealer) {
 		//if dealers hand is <= 16, hit
 		while (dealer.Value() <= 16) {
+			System.out.println("Dealer Draws...");
 			dealer.drawCard(deck);
+			printDealerHand(dealer);
 			
 			//if Dealer has soft 17, hit
 			if (dealer.Value() == 17) {
 				for(Card card : dealer.getCards()) {
 					if(card.getNumber().equals("A")) {
+						System.out.println("Dealer Draws...");
 						dealer.drawCard(deck);
+						printDealerHand(dealer);
 					}
 				}
 			}
 		}
 	}
+
 }
 

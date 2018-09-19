@@ -62,7 +62,7 @@ public class FileInput {
 			ret += PH.next().getSuiteNumber() + " ";
 		}
 		
-		System.out.println(ret);
+		System.out.println(ret + "\n");
 		return ret;
 	}
 	
@@ -79,7 +79,7 @@ public class FileInput {
 			ret += PH.next().getSuiteNumber() + " ";
 		}
 		
-		System.out.println(ret);
+		System.out.println(ret + "\n");
 		return ret;
 	}
 	
@@ -88,6 +88,7 @@ public class FileInput {
 		
 		String[] instructions = instructionsString.split("\\s+");
 		
+		/*
 		//Check for duplicate cards by putting cards into a set
 		for (String Card : instructions) {
 			if (set.add(Card) == false) {
@@ -95,6 +96,7 @@ public class FileInput {
 				System.exit(0);
 			}
 		}
+		*/
 		
 		PlayerHand formatted = new PlayerHand();
 		
@@ -118,7 +120,7 @@ public class FileInput {
 			}
 		}
 		
-		//Check if there's less than 4 inputs given
+		//Check if there's less than 4 inputs given / Deal initial hands
 		try {
 			player.addCard(formatted.getCards().get(0));
 			player.addCard(formatted.getCards().get(1));
@@ -132,7 +134,8 @@ public class FileInput {
 		printHand(player);
 		printDealerHand(dealer);
 		
-		
+		int start = PlayerTurn(player, formatted);
+		DealerTurn(dealer, formatted, start);
 	} 
 	
 	public static String promptUser(Scanner sc) {
@@ -153,5 +156,72 @@ public class FileInput {
 		System.out.println("-----------------------------------------------");
 		return true;
 	}
-
+	
+	public int PlayerTurn(PlayerHand player, PlayerHand formatted) {
+		int i = 4;
+		try {
+		while(formatted.getCards().get(i).getCommand() != null) {
+			if(formatted.getCards().get(i).getCommand().equals("H")) {
+				System.out.println("Player Hits");
+				//if hit command found, add next input in file
+				player.addCard(formatted.getCards().get(i + 1));
+				//increment i by 2 to skip to next command
+				printHand(player);
+				
+				if(player.Value() > 21) {
+					printHand(player);
+					System.out.println("---------------------------------------");
+					System.out.println("Player Bust! Dealer wins.");
+					System.exit(0);;	
+				}
+				
+				i = i + 2;
+			}
+			if(formatted.getCards().get(i).getCommand().equals("S")) {
+				System.out.println("Player Stands");
+				System.out.println("---------------------------------------\n");
+				//return index so dealer turn knows where to start
+				return (i +1);
+			}
+			if(!formatted.getCards().get(i).getCommand().equals("H") && !formatted.getCards().get(i).getCommand().equals("S")) {
+				System.out.println("Invalid Commands...");
+				System.exit(0);
+			}
+		}
+		}catch (NullPointerException e) {
+			System.out.println("Invalid file input.");
+			System.exit(0);
+		}
+		
+		return i;
+	}
+	
+	public void DealerTurn(PlayerHand dealer, PlayerHand formatted, int start) {
+		try {
+			while(formatted.getCards().get(start) != null) {
+				if (dealer.Value() <= 16) {
+					System.out.println("Dealer Hits...");
+					dealer.addCard(formatted.getCards().get(start));
+					printDealerHand(dealer);
+					
+					//if Dealer has soft 17, hit
+					if (dealer.Value() == 17) {
+						for(Card card : dealer.getCards()) {
+							if(card.getNumber().equals("A")) {
+								start++;
+								System.out.println("Dealer Hits...");
+								dealer.addCard(formatted.getCards().get(start));
+								printDealerHand(dealer);
+							}
+						}
+					}
+					
+					start ++;
+				}
+			}
+			
+		}catch (NullPointerException | IndexOutOfBoundsException i) {
+			
+		}
+	}
 }
