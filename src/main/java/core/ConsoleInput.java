@@ -39,6 +39,7 @@ public class ConsoleInput {
 				
 			}
 			else if(us.equals("s")) {
+				stand(player);
 				break;
 			}
 			else {
@@ -90,6 +91,14 @@ public class ConsoleInput {
 		}
 		
 		return "oops";	
+	}
+	
+	public boolean stand(PlayerHand player) {
+		
+		System.out.println("-----------------------------------------------");
+		printHand(player);
+		System.out.println("-----------------------------------------------");
+		return true;
 	}
 }
 

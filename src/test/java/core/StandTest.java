@@ -9,7 +9,8 @@ public class StandTest {
 	@Test
 	public void test() {
 		ConsoleInput cinput = new ConsoleInput();
-		assertTrue(cinput.stand());
+		PlayerHand hand = new PlayerHand( new Card("H10"), new Card("HJ"));
+		assertTrue(cinput.stand(hand));
 	}
 
 }
