@@ -57,6 +57,9 @@ public class PlayerHand {
 			if(handValue > 10) {
 				handValue += 1;
 			}
+			else {
+				handValue += 11;
+			}
 		}
 		return handValue;
 	}
