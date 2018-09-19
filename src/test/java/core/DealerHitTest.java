@@ -34,6 +34,14 @@ public class DealerHitTest {
 		handSizeAfter = hand3.getCards().size();
 		
 		assertTrue(handSizeBefore == handSizeAfter);
+		
+		//Test to see if dealer hits with a soft 17
+		PlayerHand hand4 = new PlayerHand( new Card("H6"), new Card("HA"));
+		handSizeBefore = hand4.getCards().size();
+		cinput.DealerTurn(hand4);
+		handSizeAfter = hand4.getCards().size();
+		
+		assertTrue(handSizeBefore < handSizeAfter);
 	}
 
 }
