@@ -145,4 +145,13 @@ public class FileInput {
 		
 		return "oops";
 	}
+	
+	public boolean stand(PlayerHand player) {
+		
+		System.out.println("-----------------------------------------------");
+		printHand(player);
+		System.out.println("-----------------------------------------------");
+		return true;
+	}
+
 }
