@@ -29,12 +29,10 @@ public class ConsoleInput {
 		
 		printDealerHand(dealer);
 		
+		System.out.println("------------------------------------------\n");
 		PlayerTurn(player);
-		
+		System.out.println("------------------------------------------\n");
 		DealerTurn(dealer);
-		
-		printHand(player);
-		printHand(dealer);
 		
 		return true;
 	}
@@ -88,6 +86,7 @@ public class ConsoleInput {
 	}
 	
 	public void PlayerTurn(PlayerHand player) {
+		System.out.println("Player's Turn: \n");
 		while(true) {
 			Scanner sc = new Scanner(System.in);
 			String us = PlayerMove(sc);
@@ -113,7 +112,9 @@ public class ConsoleInput {
 		}
 	}
 
-	public void DealerTurn(PlayerHand dealer) {
+	public boolean DealerTurn(PlayerHand dealer) {
+		System.out.println("Dealer's Turn: \n");
+		boolean ret = false;
 		//if dealers hand is <= 16, hit
 		while (dealer.Value() <= 16) {
 			System.out.println("Dealer Draws...");
@@ -131,6 +132,13 @@ public class ConsoleInput {
 				}
 			}
 		}
+		
+		System.out.println("Dealer Stands.\n");
+		System.out.println("------------------------------------------\n");
+		printHand(dealer);
+		
+		ret = true;
+		return ret;
 	}
 
 }
