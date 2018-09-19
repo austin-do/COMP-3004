@@ -10,8 +10,8 @@ public class ConsoleInput {
 	
 	public boolean runGame() {
 
-		PlayerHand player = new PlayerHand();
-		PlayerHand dealer = new PlayerHand();
+		PlayerHand player = new PlayerHand(1);
+		PlayerHand dealer = new PlayerHand(2);
 		
 		deck = new Deck();
 		deck.makeDeck();
@@ -41,7 +41,10 @@ public class ConsoleInput {
 		
 		String ret = "";
 		
-		System.out.println("Player's Hand: " );
+		if(hand.getType() != 2)
+			System.out.println("Player's Hand: " );
+		if(hand.getType() == 2)
+			System.out.println("Dealer's Hand: " );
 		
 		Iterator<Card> PH = hand.getCards().iterator();
 		while(PH.hasNext()) {
@@ -134,7 +137,6 @@ public class ConsoleInput {
 		}
 		
 		System.out.println("Dealer Stands.\n");
-		System.out.println("------------------------------------------\n");
 		printHand(dealer);
 		
 		ret = true;

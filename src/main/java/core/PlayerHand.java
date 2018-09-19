@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 public class PlayerHand {
 	private ArrayList<Card> cards = new ArrayList<Card>();
+	private int type = 0;
 	
 	public PlayerHand() {}
+	
+	public PlayerHand(int t) {
+		this.setType(t);
+	}
 	
 	public PlayerHand(Card c1, Card c2) {
 		this.cards.add(c1);
@@ -48,6 +53,14 @@ public class PlayerHand {
 			}
 		}
 		return handValue;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }
