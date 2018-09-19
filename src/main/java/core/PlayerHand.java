@@ -52,6 +52,12 @@ public class PlayerHand {
 			
 			}
 		}
+		
+		for(int i = 0; i <aces; i++) {
+			if(handValue > 10) {
+				handValue += 1;
+			}
+		}
 		return handValue;
 	}
 
