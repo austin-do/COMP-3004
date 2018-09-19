@@ -102,5 +102,10 @@ public class ConsoleInput {
 		}
 	}
 
+	public void DealerTurn(PlayerHand dealer) {
+		while (dealer.Value() <= 16) {
+			dealer.drawCard(deck);
+		}
+	}
 }
 

@@ -8,11 +8,13 @@ public class DealerHitTest {
 
 	@Test
 	public void test() {
+		ConsoleInput cinput = new ConsoleInput();
+		cinput.runGame();
 		
 		//Test to see if dealer hits when hand size is < 16
 		PlayerHand hand1 = new PlayerHand( new Card("H6"), new Card("H7"));
 		int handSizeBefore = hand1.getCards().size();
-		DealerTurn(hand1);
+		cinput.DealerTurn(hand1);
 		int handSizeAfter = hand1.getCards().size();
 		
 		assertTrue(handSizeBefore < handSizeAfter);
@@ -20,16 +22,16 @@ public class DealerHitTest {
 		//Test to see if dealer hits when hand size is = 16
 		PlayerHand hand2 = new PlayerHand( new Card("H6"), new Card("HJ"));
 		handSizeBefore = hand2.getCards().size();
-		DealerTurn(hand2);
+		cinput.DealerTurn(hand2);
 		handSizeAfter = hand2.getCards().size();
 		
 		assertTrue(handSizeBefore < handSizeAfter);
 		
 		//Test to see if dealer does not hit when hand size is > 16
-		PlayerHand hand = new PlayerHand( new Card("H10"), new Card("HJ"));
-		handSizeBefore = hand.getCards().size();
-		DealerTurn(hand);
-		handSizeAfter = hand.getCards().size();
+		PlayerHand hand3 = new PlayerHand( new Card("H10"), new Card("HJ"));
+		handSizeBefore = hand3.getCards().size();
+		cinput.DealerTurn(hand3);
+		handSizeAfter = hand3.getCards().size();
 		
 		assertTrue(handSizeBefore == handSizeAfter);
 	}
