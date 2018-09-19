@@ -103,8 +103,18 @@ public class ConsoleInput {
 	}
 
 	public void DealerTurn(PlayerHand dealer) {
+		//if dealers hand is <= 16, hit
 		while (dealer.Value() <= 16) {
 			dealer.drawCard(deck);
+			
+			//if Dealer has soft 17, hit
+			if (dealer.Value() == 17) {
+				for(Card card : dealer.getCards()) {
+					if(card.getNumber().equals("A")) {
+						dealer.drawCard(deck);
+					}
+				}
+			}
 		}
 	}
 }
