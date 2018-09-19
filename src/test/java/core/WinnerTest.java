@@ -11,11 +11,11 @@ public class WinnerTest {
 		ConsoleInput cinput = new ConsoleInput();
 		cinput.DealerBust();
 		
-		assertTrue(cinput.getWinner() == 1); 
+		assertTrue(cinput.winner == 1); 
 		
 		cinput.PlayerBust();
 		
-		assertTrue(cinput.getWinner() == 2);
+		assertTrue(cinput.winner == 2);
 		
 	}
 

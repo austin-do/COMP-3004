@@ -7,6 +7,7 @@ public class ConsoleInput {
 	Deck deck;
 	PlayerHand player;
 	PlayerHand dealer;
+	int winner = 0;
 	
 	public boolean runGame() {
 
@@ -95,12 +96,11 @@ public class ConsoleInput {
 			String us = PlayerMove(sc);
 			
 			if(us.equals("h")){
+				System.out.println("Drawing Card...");
 				player.drawCard(deck);
 				if(player.Value() > 21) {
 					printHand(player);
-					System.out.println("---------------------------------------");
-					System.out.println("Player Bust! Dealer wins.");
-					System.exit(0);;
+					PlayerBust();
 				}
 				printHand(player);
 				
@@ -122,6 +122,10 @@ public class ConsoleInput {
 		while (dealer.Value() <= 16) {
 			System.out.println("Dealer Draws...");
 			dealer.drawCard(deck);
+			if(dealer.Value() > 21) {
+				printHand(dealer);
+				DealerBust();
+			}
 			printDealerHand(dealer);
 			
 			//if Dealer has soft 17, hit
@@ -130,6 +134,10 @@ public class ConsoleInput {
 					if(card.getNumber().equals("A")) {
 						System.out.println("Dealer Draws...");
 						dealer.drawCard(deck);
+						if(dealer.Value() > 21) {
+							printHand(dealer);
+							DealerBust();
+						}
 						printDealerHand(dealer);
 					}
 				}
@@ -143,5 +151,18 @@ public class ConsoleInput {
 		return ret;
 	}
 
+	public void DealerBust() {
+		this.winner = 1;
+		System.out.println("------------------------------------------");
+		System.out.println("Dealer Bust! Player Wins.");
+		System.exit(0);
+	}
+	
+	public void PlayerBust() {
+		this.winner = 2;
+		System.out.println("------------------------------------------");
+		System.out.println("Player Bust! Dealer Wins.");
+		System.exit(0);
+	}
 }
 

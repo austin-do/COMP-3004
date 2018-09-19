@@ -54,8 +54,10 @@ public class FileInput {
 	public String printHand(PlayerHand hand) {
 		
 		String ret = "";
-		
-		System.out.println("Player's Hand: " );
+		if(hand.getType() != 2)
+			System.out.println("Player's Hand: " );
+		if(hand.getType() == 2)
+			System.out.println("Dealer's Hand: " );
 		
 		Iterator<Card> PH = hand.getCards().iterator();
 		while(PH.hasNext()) {
@@ -170,9 +172,7 @@ public class FileInput {
 				
 				if(player.Value() > 21) {
 					printHand(player);
-					System.out.println("---------------------------------------");
-					System.out.println("Player Bust! Dealer wins.");
-					System.exit(0);;	
+					PlayerBust();	
 				}
 				
 				i = i + 2;
@@ -202,6 +202,10 @@ public class FileInput {
 				if (dealer.Value() <= 16) {
 					System.out.println("Dealer Hits...");
 					dealer.addCard(formatted.getCards().get(start));
+					if(dealer.Value() > 21) {
+						printHand(dealer);
+						DealerBust();
+					}
 					printDealerHand(dealer);
 					
 					//if Dealer has soft 17, hit
@@ -211,6 +215,10 @@ public class FileInput {
 								start++;
 								System.out.println("Dealer Hits...");
 								dealer.addCard(formatted.getCards().get(start));
+								if(dealer.Value() > 21) {
+									printHand(dealer);
+									DealerBust();
+								}
 								printDealerHand(dealer);
 							}
 						}
@@ -223,5 +231,17 @@ public class FileInput {
 		}catch (NullPointerException | IndexOutOfBoundsException i) {
 			
 		}
+	}
+	
+	public void PlayerBust() {
+		System.out.println("------------------------------------------");
+		System.out.println("Player Bust! Dealer Wins.");
+		System.exit(0);
+	}
+	
+	public void DealerBust() {
+		System.out.println("------------------------------------------");
+		System.out.println("Dealer Bust! Player Wins.");
+		System.exit(0);
 	}
 }
