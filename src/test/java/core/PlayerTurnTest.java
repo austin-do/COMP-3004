@@ -19,7 +19,9 @@ public class PlayerTurnTest {
 		PrintStream newConsole = System.out;
 		System.setOut(new PrintStream(consoleStorage));
 		 
-		PlayerTurn(hand);
+		cinput.PlayerTurn(hand);
+		
+		System.setOut(newConsole);
 		
 		assertEquals(cinput.printHand(hand), consoleStorage.toString());
 	}

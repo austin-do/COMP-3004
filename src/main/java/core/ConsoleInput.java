@@ -29,23 +29,7 @@ public class ConsoleInput {
 		
 		printDealerHand(dealer);
 		
-		while(true) {
-			Scanner sc = new Scanner(System.in);
-			String us = PlayerMove(sc);
-			
-			if(us.equals("h")){
-				player.drawCard(deck);
-				printHand(player);
-				
-			}
-			else if(us.equals("s")) {
-				stand(player);
-				break;
-			}
-			else {
-				System.out.println("Invalid selection.");
-			}
-		}
+		PlayerTurn(player);
 		
 		return true;
 	}
@@ -94,9 +78,28 @@ public class ConsoleInput {
 	}
 	
 	public boolean stand(PlayerHand player) {
-	
 		printHand(player);
 		return true;
+	}
+	
+	public void PlayerTurn(PlayerHand player) {
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			String us = PlayerMove(sc);
+			
+			if(us.equals("h")){
+				player.drawCard(deck);
+				printHand(player);
+				
+			}
+			else if(us.equals("s")) {
+				stand(player);
+				break;
+			}
+			else {
+				System.out.println("Invalid selection.");
+			}
+		}
 	}
 
 }
