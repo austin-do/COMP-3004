@@ -13,6 +13,12 @@ public class AceTest {
 		hand1.addCard(new Card("HA"));
 		
 		assertEquals(14, hand1.Value());
+		
+		//Ace can count as 11
+				PlayerHand hand2 = new PlayerHand( new Card("H2"), new Card("H3"));
+				hand2.addCard(new Card("HA"));
+				
+				assertEquals(16, hand1.Value());
 	}
 
 }
