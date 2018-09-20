@@ -21,7 +21,7 @@ public class WhoWinsTest {
 		assertEquals(1, cinput.winner);
 		
 		//If dealer has BlackJack 
-		PlayerHand dealer2 = new PlayerHand( new  Card("H10"), new Card("H8"));
+		PlayerHand dealer2 = new PlayerHand( new  Card("H10"), new Card("HA"));
 		
 		cinput.BlackJack(player);
 		cinput.BlackJack(dealer2);
