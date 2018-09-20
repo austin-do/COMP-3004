@@ -128,6 +128,9 @@ public class ConsoleInput {
 		while (dealer.Value() <= 16) {
 			System.out.println("Dealer Draws...");
 			dealer.drawCard(deck);
+			if (player.Value() == 21) {
+				BlackJack(dealer);
+			}
 			if(dealer.Value() > 21) {
 				printHand(dealer);
 				DealerBust();
@@ -140,6 +143,9 @@ public class ConsoleInput {
 					if(card.getNumber().equals("A")) {
 						System.out.println("Dealer Draws...");
 						dealer.drawCard(deck);
+						if (player.Value() == 21) {
+							BlackJack(dealer);
+						}
 						if(dealer.Value() > 21) {
 							printHand(dealer);
 							DealerBust();
@@ -151,6 +157,9 @@ public class ConsoleInput {
 		}
 		
 		System.out.println("Dealer Stands.\n");
+		if (dealer.Value() == 21) {
+			BlackJack(dealer);
+		}
 		printHand(dealer);
 		
 		ret = true;

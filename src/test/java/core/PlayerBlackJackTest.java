@@ -18,5 +18,5 @@ public class PlayerBlackJackTest {
 		assertTrue(player.blackjack = true);
 
 	}
-
+ 
 }

@@ -209,6 +209,9 @@ public class FileInput {
 				if (dealer.Value() <= 16) {
 					System.out.println("Dealer Hits...");
 					dealer.addCard(formatted.getCards().get(start));
+					if (dealer.Value() == 21) {
+						BlackJack(dealer);
+					}
 					if(dealer.Value() > 21) {
 						printHand(dealer);
 						DealerBust();
@@ -222,6 +225,9 @@ public class FileInput {
 								start++;
 								System.out.println("Dealer Hits...");
 								dealer.addCard(formatted.getCards().get(start));
+								if (dealer.Value() == 21) {
+									BlackJack(dealer);
+								}
 								if(dealer.Value() > 21) {
 									printHand(dealer);
 									DealerBust();
