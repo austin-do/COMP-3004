@@ -24,10 +24,19 @@ public class WhoWinsTest {
 		PlayerHand dealer2 = new PlayerHand( new  Card("H10"), new Card("H8"));
 		
 		cinput.BlackJack(player);
-		cinput.BlackJack(dealer);
+		cinput.BlackJack(dealer2);
 		
 		cinput.WhoWins(player, dealer2);
 		
+		assertEquals(2, cinput.winner);
+		
+		//If player hand value > dealer hand value, player wins. 
+		PlayerHand player2 = new PlayerHand( new  Card("H10"), new Card("H8"));
+		PlayerHand dealer3 = new PlayerHand( new  Card("H10"), new Card("H7"));
+		
+		cinput.WhoWins(player2, dealer3);
+		
+		assertEquals(1, cinput.winner);
 	}
 
 }
