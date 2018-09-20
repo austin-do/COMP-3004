@@ -21,9 +21,15 @@ public class AceTest {
 		assertEquals(16, hand2.Value());
 		
 		//Ace can count as 11 and 1 in one hand
-				PlayerHand hand3 = new PlayerHand( new Card("HA"), new Card("DA"));
+		PlayerHand hand3 = new PlayerHand( new Card("HA"), new Card("DA"));
+		
+		assertEquals(12, hand3.Value());
 				
-				assertEquals(12, hand3.Value());
+		//Ace can count as 11 and then 1 
+		PlayerHand hand4 = new PlayerHand( new Card("HA"), new Card("D9"));
+		hand4.addCard(new Card("DK"));
+		
+		assertEquals(20, hand4.Value());
 	}
 
 }
