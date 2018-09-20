@@ -11,7 +11,7 @@ public class PlayerScoreTest {
 		
 		ConsoleInput cinput = new ConsoleInput();
 		PlayerHand player = new PlayerHand(new Card("H10"), new Card("H8"));
-		int val = cinput.PrintPlayerValue(player);
+		int val = cinput.printPlayerValue(player);
 		assertEquals(18, val);
 	}
 
