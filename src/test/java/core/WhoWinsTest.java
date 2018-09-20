@@ -37,6 +37,14 @@ public class WhoWinsTest {
 		cinput.WhoWins(player2, dealer3);
 		
 		assertEquals(1, cinput.winner);
+		
+		//If !(player hand value > dealer hand value), dealer wins. 
+		PlayerHand player3 = new PlayerHand( new  Card("H10"), new Card("H7"));
+		PlayerHand dealer4 = new PlayerHand( new  Card("H10"), new Card("H8"));
+		
+		cinput.WhoWins(player3, dealer4);
+		
+		assertEquals(2, cinput.winner);
 	}
 
 }
