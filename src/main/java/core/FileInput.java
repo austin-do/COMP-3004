@@ -175,11 +175,18 @@ public class FileInput {
 					PlayerBust();	
 				}
 				
+				if(player.Value() == 21) {
+					BlackJack(player);
+				}
+				
 				i = i + 2;
 			}
 			if(formatted.getCards().get(i).getCommand().equals("S")) {
 				System.out.println("Player Stands");
 				System.out.println("---------------------------------------\n");
+				if(player.Value() == 21) {
+					BlackJack(player);
+				}
 				//return index so dealer turn knows where to start
 				return (i +1);
 			}
@@ -243,5 +250,9 @@ public class FileInput {
 		System.out.println("------------------------------------------");
 		System.out.println("Dealer Bust! Player Wins.");
 		System.exit(0);
+	}
+	
+	public void BlackJack(PlayerHand hand) {
+		hand.hasBlackJack();
 	}
 }
