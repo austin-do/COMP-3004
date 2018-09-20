@@ -222,57 +222,6 @@ public class ConsoleInput {
 		System.out.println("Value of Dealer's Hand: " + ret);
 		return ret;
 	}
-	
-	public boolean splittable(PlayerHand hand) {
-		boolean ret = false;
-		if(hand.getCards().get(0).getNumber().equals(hand.getCards().get(1).getNumber())) {
-			ret = true;
-			splitPlayer(hand);
-		}
-		else {
-			ret = false;
-		}
-		return ret;
-	}
 
-	public void splitPlayer(PlayerHand player) {
-		System.out.println("Player's Turn: \n");
-		while(true) {
-			Scanner sc = new Scanner(System.in);
-			String us = "";
-			System.out.println("Would you like to (H)it, (S)tand, or Split(D)? ");
-			if(sc.hasNextLine()) {
-				us = sc.nextLine().toString().toLowerCase();
-			}
-			
-			if(us.equals("h")){
-				System.out.println("Drawing Card...");
-				player.drawCard(deck);
-				if (player.Value() == 21) {
-					BlackJack(player);
-				}
-				if(player.Value() > 21) {
-					printHand(player);
-					PlayerBust();
-				}
-				printHand(player);
-				
-			}
-			if(us.equals("s")) {
-				stand(player);
-				if (player.Value() == 21) {
-					BlackJack(player);
-				}
-				break;
-			}
-			if (us.equals("d")) {
-				PlayerHand pHand1 = new PlayerHand(player.getCards().get(0));
-				PlayerHand pHand2 = new PlayerHand(player.getCards().get(1));
-			}
-			else {
-				System.out.println("Invalid selection.");
-			}
-		}
-	}
 }
 
