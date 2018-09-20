@@ -90,20 +90,20 @@ public class FileInput {
 		
 		String[] instructions = instructionsString.split("\\s+");
 		
-		/*
-		//Check for duplicate cards by putting cards into a set
-		for (String Card : instructions) {
-			if (set.add(Card) == false) {
-				System.out.println("File contains invalid input.");
-				System.exit(0);
-			}
-		}
-		*/
-		
 		PlayerHand formatted = new PlayerHand();
 		
 		for (int i = 0; i < instructions.length; i++) {
 			formatted.addCard(new Card(instructions[i]));
+		}
+		
+		for(Card card : formatted.getCards()) {
+			if(card.getCommand() == null) {
+				System.out.println(card.getSuiteNumber());
+				if (set.add(card) == false) {
+					System.out.println("File contains invalid input.");
+					System.exit(0);
+				}
+			}
 		}
 		
 		return formatted;
