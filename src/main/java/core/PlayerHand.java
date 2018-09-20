@@ -34,6 +34,7 @@ public class PlayerHand {
 		int handValue = 0;
 		int aces = 0;
 		
+		//converts string values into ints so arithmetic can be used
 		for(Card card : this.cards) {
 			switch(card.getNumber()) {
 			case "2": handValue += 2; break;
