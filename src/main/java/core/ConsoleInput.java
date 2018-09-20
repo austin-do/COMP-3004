@@ -188,6 +188,9 @@ public class ConsoleInput {
 		if(player.blackjack && !dealer.blackjack) {
 			this.winner = 1;
 		}
+		if(dealer.blackjack) {
+			this.winner = 2;
+		}
 	}
 }
 
