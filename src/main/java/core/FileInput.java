@@ -101,7 +101,7 @@ public class FileInput {
 		
 		for(Card card : formatted.getCards()) {
 			if(card.getCommand() == null) {
-				if (set.add(card) == false) {
+				if (set.add(card.getSuiteNumber()) == false) {
 					System.out.println("File contains invalid input.");
 					System.exit(0);
 				}
