@@ -194,6 +194,9 @@ public class ConsoleInput {
 		if(player.Value() > dealer.Value()) {
 			this.winner = 1;
 		}
+		else {
+			this.winner = 2;
+		}
 	}
 
 	public int printPlayerValue(PlayerHand player) {
