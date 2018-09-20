@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PlayerHand {
 	private ArrayList<Card> cards = new ArrayList<Card>();
 	private int type = 0;
+	boolean blackjack = false;
 	
 	public PlayerHand() {}
 	
@@ -71,6 +72,10 @@ public class PlayerHand {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+	
+	public void hasBlackJack() {
+		this.blackjack = true;
 	}
 	
 }

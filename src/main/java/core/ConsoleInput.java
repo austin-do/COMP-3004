@@ -98,6 +98,9 @@ public class ConsoleInput {
 			if(us.equals("h")){
 				System.out.println("Drawing Card...");
 				player.drawCard(deck);
+				if (player.Value() == 21) {
+					BlackJack(player);
+				}
 				if(player.Value() > 21) {
 					printHand(player);
 					PlayerBust();
@@ -107,6 +110,9 @@ public class ConsoleInput {
 			}
 			else if(us.equals("s")) {
 				stand(player);
+				if (player.Value() == 21) {
+					BlackJack(player);
+				}
 				break;
 			}
 			else {
@@ -163,6 +169,10 @@ public class ConsoleInput {
 		System.out.println("------------------------------------------");
 		System.out.println("Player Bust! Dealer Wins.");
 		System.exit(0);
+	}
+	
+	public void BlackJack(PlayerHand hand) {
+		hand.hasBlackJack();
 	}
 }
 

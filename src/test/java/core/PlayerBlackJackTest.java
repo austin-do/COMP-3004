@@ -15,7 +15,7 @@ public class PlayerBlackJackTest {
 	
 		cinput.PlayerTurn(player);
 		
-		assertTrue(player.hasBlackJack());
+		assertTrue(player.blackjack = true);
 
 	}
 
