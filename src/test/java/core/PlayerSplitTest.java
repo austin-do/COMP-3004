@@ -8,11 +8,12 @@ public class PlayerSplitTest {
 
 	@Test
 	public void test() {
+		ConsoleInput cinput = new ConsoleInput();
 		PlayerHand hand1 = new PlayerHand( new Card("H6"), new Card("D3"));
-		assertTrue(!splittable(hand1));
+		assertTrue(!cinput.splittable(hand1));
 		
 		PlayerHand hand2 = new PlayerHand( new Card("H6"), new Card("D6"));
-		assertTrue(splittable(hand2));
+		assertTrue(cinput.splittable(hand2));
 	}
 
 }

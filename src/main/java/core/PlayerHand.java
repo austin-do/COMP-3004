@@ -9,6 +9,10 @@ public class PlayerHand {
 	
 	public PlayerHand() {}
 	
+	public PlayerHand(Card c1) {
+		this.cards.add(c1);
+	}
+	
 	public PlayerHand(int t) {
 		this.setType(t);
 	}
