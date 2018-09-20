@@ -272,4 +272,5 @@ public class FileInput {
 			this.winner = 2;
 		}
 	}
+	
 }
