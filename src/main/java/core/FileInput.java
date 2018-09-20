@@ -273,4 +273,9 @@ public class FileInput {
 		}
 	}
 	
+	public int printPlayerValue(PlayerHand player) {
+		int ret = player.Value();
+		System.out.println("Value of Player's Hand: " + ret);
+		return ret;
+	}
 }
