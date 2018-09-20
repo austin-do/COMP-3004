@@ -12,7 +12,7 @@ public class PlayerBlackJackTest {
 		ConsoleInput cinput = new ConsoleInput();
 		
 		PlayerHand player = new PlayerHand( new  Card("H10"), new Card("HA"));
-	
+		
 		cinput.PlayerTurn(player);
 		
 		assertTrue(player.blackjack = true);

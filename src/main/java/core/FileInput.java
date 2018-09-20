@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class FileInput {
 	
+	int winner = 0;
+	
 	public String readFile(String fileName) throws FileNotFoundException {
 		
 		//Find file in current directory called fileInput
@@ -260,5 +262,11 @@ public class FileInput {
 	
 	public void BlackJack(PlayerHand hand) {
 		hand.hasBlackJack();
+	}
+	
+	public void WhoWins(PlayerHand player, PlayerHand dealer) {
+		if(player.blackjack && !dealer.blackjack) {
+			this.winner = 1;
+		}
 	}
 }

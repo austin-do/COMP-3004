@@ -183,5 +183,11 @@ public class ConsoleInput {
 	public void BlackJack(PlayerHand hand) {
 		hand.hasBlackJack();
 	}
+	
+	public void WhoWins(PlayerHand player, PlayerHand dealer) {
+		if(player.blackjack && !dealer.blackjack) {
+			this.winner = 1;
+		}
+	}
 }
 
