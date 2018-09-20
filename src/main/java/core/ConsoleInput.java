@@ -198,5 +198,11 @@ public class ConsoleInput {
 		System.out.println("Value of Player's Hand: " + ret);
 		return ret;
 	}
+	
+	public int printDealerValue(PlayerHand dealer) {
+		int ret = dealer.Value();
+		System.out.println("Value of Dealer's Hand: " + ret);
+		return ret;
+	}
 }
 
