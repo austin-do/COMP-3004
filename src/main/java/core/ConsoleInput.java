@@ -35,6 +35,18 @@ public class ConsoleInput {
 		System.out.println("------------------------------------------\n");
 		DealerTurn(dealer);
 		
+		System.out.println("------------------------------------------\n");
+		System.out.println("Results:");
+		printPlayerValue(player);
+		printDealerValue(dealer);
+		
+		WhoWins(player, dealer);
+		if(winner == 1) {
+			System.out.println("Player Wins!");
+		}
+		if(winner == 2) {
+			System.out.println("Dealer Wins!");
+		}
 		return true;
 	}
 	
@@ -128,7 +140,7 @@ public class ConsoleInput {
 		while (dealer.Value() <= 16) {
 			System.out.println("Dealer Draws...");
 			dealer.drawCard(deck);
-			if (player.Value() == 21) {
+			if (dealer.Value() == 21) {
 				BlackJack(dealer);
 			}
 			if(dealer.Value() > 21) {

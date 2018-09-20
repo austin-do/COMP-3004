@@ -50,6 +50,7 @@ public class FileInput {
 		PlayerHand formatted = checkInstructions(instructionsString);
 		
 		processInstructions(formatted);
+		
 
 	}
 	
@@ -100,7 +101,6 @@ public class FileInput {
 		
 		for(Card card : formatted.getCards()) {
 			if(card.getCommand() == null) {
-				System.out.println(card.getSuiteNumber());
 				if (set.add(card) == false) {
 					System.out.println("File contains invalid input.");
 					System.exit(0);
@@ -140,6 +140,19 @@ public class FileInput {
 		
 		int start = PlayerTurn(player, formatted);
 		DealerTurn(dealer, formatted, start);
+		
+		System.out.println("------------------------------------------\n");
+		System.out.println("Results:");
+		printPlayerValue(player);
+		printDealerValue(dealer);
+		
+		WhoWins(player, dealer);
+		if(winner == 1) {
+			System.out.println("Player Wins!");
+		}
+		if(winner == 2) {
+			System.out.println("Dealer Wins!");
+		}
 	} 
 	
 	public static String promptUser(Scanner sc) {
